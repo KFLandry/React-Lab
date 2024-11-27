@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tema ça marche</title>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body> 
     <div id="root"></div>
-    <script src="app.js"></script>
+    <script type="text/babel">
+        function Header(props) {
+            return (
+                <div className="mx-5">
+                    <h1 className="text-blue-300">{props.message}</h1>
+                    <ul>
+                        {props.names.map(name => (
+                            <li key={name}>
+                                Bienvenue, {name}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        let name = "Tema, ça marche 🙂";
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+        const rootNode = document.getElementById("root");
+        ReactDOM.render(<Header message={name} names={names} />, rootNode);
+    </script> 
 </body>
 </html>
